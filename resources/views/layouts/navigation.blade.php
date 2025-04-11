@@ -34,6 +34,18 @@
                     </x-slot>
 
                     <x-slot name="content">
+
+                        @if(Auth::user()->role === 'user')
+                        <x-dropdown-link :href="route('posts.index')">
+                            {{ __('My Posts') }}
+                        </x-dropdown-link>
+
+                        @else
+                        <x-dropdown-link :href="route('admin.posts.index')">
+                            {{ __('Posts') }}
+                        </x-dropdown-link>
+                        @endif
+                        
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
